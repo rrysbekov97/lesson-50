@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    #app {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid blue;
+      background-color: lightblue;
+      padding: 10px;
+    }
+
+    img {
+      max-width: 150px;
+      max-height: 200px;
+      border-radius: 5px;
+    }
+
+    p {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+</body>
+
+<script type="text/babel">
+  const MovieCard = ({ poster, name, year }) => {
+    return (
+      <div className="movie">
+        <img src={poster} alt="poster" />
+        <h1> {name} </h1>
+        <p>Год выпуска: {year} </p>
+      </div>
+    )
+  }
+
+  const myMovies = document.getElementById('app');
+  const movies = [
+    {name: 'Titanic', year: 1999, poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH0cIJM4Knf210MAsTyloqU-Uzt9ffXkxn0Q&s', id: 0},
+    {name: 'Gladiator', year: 2001, poster: 'https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png', id: 1},
+    {name: 'Spider-Man', year: 2012, poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCSpkfdK12-hysT_a-tgdaLF_FzFcqEosDrQ&s', id: 2}
+  ]
+
+  const Movies = (
+    movies.map(movie => {
+      return (
+        <MovieCard key={movie.id} poster={movie.poster} name={movie.name} year={movie.year} />
+      )
+    })
+  )
+
+  ReactDOM.render(Movies, myMovies);
+
+</script>
+
+</html>
